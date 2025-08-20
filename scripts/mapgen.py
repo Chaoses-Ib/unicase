@@ -90,7 +90,8 @@ class Run:
             if len(self.map_tos)==1:
                 rs.write("            %s => 0x%04x,\n" % (format_range_edge(self.start), self.map_tos[0]))
             else:
-                rs.write("            %s => return %s,\n" % (format_range_edge(self.start), replacement(self.map_tos)))
+                # rs.write("            %s => return %s,\n" % (format_range_edge(self.start), replacement(self.map_tos)))
+                pass
         elif self.every_other != True:
             rs.write(remove_useless_comparison("            x @ _ if %s <= x && x <= %s => from.%s,\n" % (format_range_edge(self.start), format_range_edge(self.end), apply_constant_offset(self.start, self.map_tos[0]))),)
         elif self.map_tos[0] - self.start == 1 and self.start%2==0:
